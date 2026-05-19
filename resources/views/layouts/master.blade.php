@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
     @include('libraries.styles')
+    @yield('customCSS')
 <body>
 
     @yield('content')

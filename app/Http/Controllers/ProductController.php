@@ -19,4 +19,15 @@ class ProductController extends Controller
         $response = ProductService::setProductCreate($request);
         return response()->json($response);
     }
+
+    public function getProductDetails(Request $request){
+        $response = ProductService::getProductDetails($request);
+        return response()->json($response);
+    }
+
+    public function setProductDelete(Request $request){
+        $response = ProductService::setProductDelete($request);
+        return response()->json($response);
+    }
+
 }

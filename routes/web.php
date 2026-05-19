@@ -20,5 +20,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/get-add-products',[ProductController::class, 'loadAddProducts'])->name('product.add');
 Route::post('/set-product-creat',[ProductController::class, 'setProductCreate']);
-
+Route::get('/get-product-details',[ProductController::class,'getProductDetails']);
+Route::post('/set-product-delete',[ProductController::class,'setProductDelete']);
 require __DIR__.'/auth.php';
