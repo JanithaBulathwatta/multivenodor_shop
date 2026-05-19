@@ -36,7 +36,7 @@ class ProductServiceRepository implements ProductServiceInterface{
     public function getProductDetails($request){
 
         $resultSQL = DB::table('products')
-                        ->select('id','product_name','description','price','stock_quantity','product_image')
+                        ->select('id','product_name','description','price','stock_quantity','product_image','category_id')
                         ->where('record_status',1)
                         ->get();
 

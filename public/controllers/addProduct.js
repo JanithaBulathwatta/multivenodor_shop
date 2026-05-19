@@ -11,6 +11,7 @@ $(document).ready(function(){
         scrollCollapse: true,
         columnDefs: [
             { targets: [0, 1, 2, 3, 4, 5], className: 'text-center align-middle' },
+            { targets: [6, 7], className: 'text-center align-middle', visible:false}
         ],
 
     });
@@ -41,6 +42,7 @@ $(document).ready(function(){
             processData: false,
             success:function(response){
                 alert(response.message);
+                getProductDetails();
             },
             error:function(xhr){
                 console.log(xhr.responseText)
@@ -70,10 +72,13 @@ $(document).ready(function(){
                             row['description'],
                             row['price'],
                             row['stock_quantity'],
-                            `<button class="btn btn-danger btnDelete" data-id = ${row['id']}>delete</button>`
-                        ])
+                            `<button class="btn btn-danger btnDelete" data-id = ${row['id']}>delete</button>
+                            <button class="btn btn-success btnEdit">Edit</button>`,
+                            row['product_image'],
+                            row['category_id']
+                        ]);
                         index++
-                    })
+                    });
                     table.rows.add(formatedData).draw();
                 }
             },
@@ -106,7 +111,34 @@ $(document).ready(function(){
                 }
             });
         }
+    });
 
-    })
+    $(document).on('click','.btnEdit',function(e){
+        e.preventDefault();
+        let row = $('#tblProdutDetails').DataTable().row($(this).closest('tr')).data();
+        let pName = row[1];
+        let description = row[2];
+        let price = row[3];
+        let stock = row[4];
+        let image = row[6];
+        let categoryId = row[7]
+
+        $('#txtProductUpdateName').val(pName);
+        $('#cmbUpdateCategoryId').val(categoryId);
+        $('#textUpdatePrice').val(price);
+        $('#txtUpdateStockQuantity').val(stock);
+        $('#txtUpdateDescription').val(description);
+        $('#hidden_old_image_path').val(image);
+
+        let oldImageURL = "/storage/" + image;
+        $('#update_image_preview').attr('src', oldImageURL).show();
+        $('#divModalUpdate').modal('show');
+
+    });
+
+    $(document).on('click','#btnUpdateProduct',function(e){
+        e.preventDefault();
+        
+    });
 
 });
