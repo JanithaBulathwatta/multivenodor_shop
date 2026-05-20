@@ -22,4 +22,5 @@ Route::get('/get-add-products',[ProductController::class, 'loadAddProducts'])->n
 Route::post('/set-product-creat',[ProductController::class, 'setProductCreate']);
 Route::get('/get-product-details',[ProductController::class,'getProductDetails']);
 Route::post('/set-product-delete',[ProductController::class,'setProductDelete']);
+Route::post('/set-product-update',[ProductController::class,'setProductUpdate']);
 require __DIR__.'/auth.php';

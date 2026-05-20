@@ -20,4 +20,9 @@ class ProductService{
         return $result;
     }
 
+    public static function setProductUpdate($request){
+        $result = app()->make(ProductServiceInterface::class)->setProductUpdate($request);
+        return $result;
+    }
+
 }

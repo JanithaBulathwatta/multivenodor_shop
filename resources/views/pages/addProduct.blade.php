@@ -9,6 +9,12 @@
             <div class="card-body">
 
                 <form id="frmAddProduct" enctype="multipart/form-data">
+                    <input type="hidden" name="hdnProductId" id="hdnProductId">
+                    <input type="hidden" name="hdnOldDescription" id="hdnOldDescription">
+                    <input type="hidden" name="hdnOldStockQuantity" id="hdnOldStockQuantity">
+                    <input type="hidden" name="hdnOldPrice" id="hdnOldPrice">
+                    <input type="hidden" name="hdnOldCategory" id="hdnOldCategory">
+                    <input type="hidden" name="hdnOldPname" id="hdnOldPname">
                     @csrf
 
                     <div class="row">
@@ -96,9 +102,9 @@
         <div class="modal" tabindex="-1" id="divModalUpdate" style="display: none">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
-                    <div class="modal-header bg-primary">
+                    <div class="modal-header bg-dark">
                         <h5 class="modal-title text-white">update product</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: white; !important"></button>
                     </div>
                     <div class="modal-body">
                         <form id="frmAddProductUpdate" enctype="multipart/form-data">
@@ -124,7 +130,7 @@
 
                                 <div class="col-md-4 mb-3">
                                     <label class="form-label">Price (LKR)</label>
-                                    <input type="string" name="textUpdatePrice" id="textUpdatePrice" step="0.01"
+                                    <input type="string" name="txtUpdatePrice" id="txtUpdatePrice" step="0.01"
                                         class="form-control" required>
                                 </div>
                             </div>
@@ -145,7 +151,7 @@
                             </div>
 
                             <div class="form-group mb-3 text-center">
-                                <label class="form-label d-block fw-bold">Current Product Image</label>
+                                <label class="form-label d-block fw-bold" id="lblImgTitile">Current Product Image</label>
 
                                 <img id="update_image_preview" src="" alt="Product Preview"
                                     style="width: 400px; height: 200px; object-fit: cover; border-radius: 8px; border: 2px solid #ddd; display: none;">
@@ -154,7 +160,7 @@
                             <div class="form-group mb-3 col-md-4">
                                 <label for="update_product_image" class="form-label fw-bold">Upload New Image
                                     (Optional)</label>
-                                <input type="file" id="update_product_image" class="form-control">
+                                <input type="file" id="update_product_image" name="update_product_image" class="form-control">
                                 <small class="text-muted"></small>
                             </div>
 

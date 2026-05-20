@@ -30,4 +30,10 @@ class ProductController extends Controller
         return response()->json($response);
     }
 
+    public function setProductUpdate(Request $request){
+        $response = ProductService::setProductUpdate($request);
+        return response()->json($response);
+    }
+
+
 }

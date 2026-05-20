@@ -60,5 +60,52 @@ class ProductServiceRepository implements ProductServiceInterface{
         ];
     }
 
+    public function setProductUpdate($request){
+        //dd($request->all());
+        $newProductName = $request->updatedProductName;
+        $newCategoryId = $request->updatedCategory;
+        $newPrice = $request->updatedPrice;
+        $newQuantity = $request->updatedQuantoty;
+        $newDescription = $request->updatedDiscription;
+        $newImage = $request->updatedImage;
+        $productId = $request->productId;
+
+        $oldName = $request->oldName;
+        $oldPrice = $request->oldPrice;
+        $oldCategory = $request->oldCategory;
+        $oldQuantity = $request->oldQuantity;
+        $oldDescription = $request->oldDescription;
+        $oldImagePath = $request->oldImagePath;
+
+        $imagePath = '';
+
+        if ($request->hasFile('updatedImage')) {
+            $imagePath = $request->file('updatedImage')->store('products', 'public');
+        }
+
+        if($newProductName == $oldName && $newCategoryId == $oldCategory && $newPrice == $oldPrice && $newQuantity == $oldQuantity && $newDescription == $oldDescription && $imagePath == ''){
+            return[
+                "status"=>400,
+                "message"=>['atleast one criteria should be change']
+            ];
+        }
+
+        DB::table('products')
+                ->where('id',$productId)
+                ->update([
+                    'product_name'=>$newProductName,
+                    'description'=>$newDescription,
+                    'price'=>$newPrice,
+                    'stock_quantity'=>$newQuantity,
+                    'product_image'=>$imagePath,
+                    'category_id'=>$newCategoryId
+                ]);
+        return[
+            "status"=>200,
+            "message"=>['succesfully update']
+        ];
+
+    }
+
 
 }

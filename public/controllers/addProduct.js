@@ -73,7 +73,7 @@ $(document).ready(function(){
                             row['price'],
                             row['stock_quantity'],
                             `<button class="btn btn-danger btnDelete" data-id = ${row['id']}>delete</button>
-                            <button class="btn btn-success btnEdit">Edit</button>`,
+                            <button class="btn btn-success btnEdit" data-id = ${row['id']}>Edit</button>`,
                             row['product_image'],
                             row['category_id']
                         ]);
@@ -121,14 +121,24 @@ $(document).ready(function(){
         let price = row[3];
         let stock = row[4];
         let image = row[6];
-        let categoryId = row[7]
+        let categoryId = row[7];
+        let productId = $(this).data('id');
 
         $('#txtProductUpdateName').val(pName);
         $('#cmbUpdateCategoryId').val(categoryId);
-        $('#textUpdatePrice').val(price);
+        $('#txtUpdatePrice').val(price);
         $('#txtUpdateStockQuantity').val(stock);
         $('#txtUpdateDescription').val(description);
         $('#hidden_old_image_path').val(image);
+        $('#hdnProductId').val(productId);
+
+        $('#hdnOldPname').val(pName);
+        $('#hdnOldCategory').val(categoryId);
+        $('#hdnOldPrice').val(price);
+        $('#hdnOldStockQuantity').val(stock);
+        $('#hdnOldDescription').val(description);
+
+
 
         let oldImageURL = "/storage/" + image;
         $('#update_image_preview').attr('src', oldImageURL).show();
@@ -138,7 +148,72 @@ $(document).ready(function(){
 
     $(document).on('click','#btnUpdateProduct',function(e){
         e.preventDefault();
-        
+        let updatedProductName = $('#txtProductUpdateName').val();
+        let updatedCategory = $('#cmbUpdateCategoryId').val();
+        let updatedPrice = $('#txtUpdatePrice').val();
+        let updatedQuantoty = $('#txtUpdateStockQuantity').val();
+        let updatedDiscription = $('#txtUpdateDescription').val();
+        let updatedImage = $('#update_product_image')[0].files[0];
+        let productId = $('#hdnProductId').val();
+
+        let oldName = $('#hdnOldPname').val();
+        let oldPrice = $('#hdnOldPrice').val();
+        let oldCategory = $('#hdnOldCategory').val();
+        let oldQuantity = $('#hdnOldStockQuantity').val();
+        let oldDescription = $('#hdnOldDescription').val();
+        let oldImagePath = $('#hidden_old_image_path').val();
+
+
+
+        let formData = new FormData();
+        formData.append('updatedProductName',updatedProductName);
+        formData.append('updatedCategory',updatedCategory);
+        formData.append('updatedPrice',updatedPrice);
+        formData.append('updatedQuantoty',updatedQuantoty);
+        formData.append('updatedDiscription',updatedDiscription);
+        formData.append('updatedImage',updatedImage);
+        formData.append('productId',productId);
+        formData.append('oldName',oldName);
+        formData.append('oldPrice',oldPrice);
+        formData.append('oldCategory',oldCategory);
+        formData.append('oldQuantity',oldQuantity);
+        formData.append('oldDescription',oldDescription);
+        formData.append('oldImagePath',oldImagePath);
+
+        console.log('dataset: ',formData);
+        $.ajax({
+            type:"POST",
+            url:"/set-product-update",
+            data:formData,
+            dataType:"json",
+            contentType: false,
+            processData: false,
+            success:function(response){
+                if(response.status == 200){
+                    alert(response.message);
+                    $('#frmAddProductUpdate')[0].reset();
+                    $('#divModalUpdate').modal('hide');
+                }else{
+                    alert(response.message);
+                }
+                getProductDetails();
+            },
+            error:function(xhr){
+                console.log(xhr.responseText)
+            }
+        });
     });
+
+    $('#update_product_image').change(function() {
+    let file = this.files[0];
+    if (file) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            $('#lblImgTitile').text('New Product Image');
+            $('#update_image_preview').attr('src', e.target.result).show();
+        }
+        reader.readAsDataURL(file);
+    }
+});
 
 });
