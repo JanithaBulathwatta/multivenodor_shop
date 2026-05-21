@@ -10,7 +10,7 @@
     @include('libraries.styles')
     @yield('customCSS')
 <body>
-
+    {{-- @include('components.nav-bar') --}}
     @yield('content')
 
 
@@ -29,6 +29,6 @@
                     // validations();
                 });
         </script>
-
+{{-- @include('components.footer') --}}
 </body>
 </html>
