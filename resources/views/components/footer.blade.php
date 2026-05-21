@@ -1,106 +1,87 @@
-{{-- resources/views/components/footer.blade.php --}}
+<footer class="bg-white border-top mt-5 pt-5 pb-4">
+    <div class="container-fluid px-4 px-md-5">
+        <div class="row g-4">
 
-<footer class="bg-slate-900 text-slate-400 mt-16">
-
-    {{-- Main Footer --}}
-    <div class="max-w-7xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-
-            {{-- Brand --}}
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                        <svg class="w-4 h-4 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            <div class="col-lg-4 col-md-6">
+                <a class="d-flex align-items-center gap-2 text-decoration-none mb-3" href="#">
+                    <div class="d-flex align-items-center justify-content-center rounded-3 bg-dark text-white" style="width: 36px; height: 36px;">
+                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
                     </div>
-                    <span class="text-white font-bold text-lg tracking-tight">Multi<span class="text-slate-400 font-light">Shop</span></span>
-                </div>
-                <p class="text-sm leading-relaxed mb-5">
-                    Your one-stop destination for the best products at unbeatable prices. Quality you can trust.
+                    <span class="fw-bold fs-5 text-dark tracking-tight">Multi<span class="text-secondary fw-light">Shop</span></span>
+                </a>
+                <p class="text-muted small mb-4" style="max-width: 320px; line-height: 1.6;">
+                    Discover our freshest collection of handpicked premium products. Experience fast delivery and reliable customer support.
                 </p>
-                <div class="flex gap-3">
-                    <a href="#" class="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+
+                <div class="d-flex gap-2">
+                    <a href="#" class="btn btn-light rounded-circle d-flex align-items-center justify-content-center border-0 text-dark p-0" style="width: 38px; height: 38px; background: #f8fafc; transition: all 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f8fafc'">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
                         </svg>
                     </a>
-                    <a href="#" class="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    <a href="#" class="btn btn-light rounded-circle d-flex align-items-center justify-content-center border-0 text-dark p-0" style="width: 38px; height: 38px; background: #f8fafc; transition: all 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f8fafc'">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.056-4.425 5.056H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
                         </svg>
                     </a>
-                    <a href="#" class="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    <a href="#" class="btn btn-light rounded-circle d-flex align-items-center justify-content-center border-0 text-dark p-0" style="width: 38px; height: 38px; background: #f8fafc; transition: all 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f8fafc'">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
                     </a>
                 </div>
             </div>
 
-            {{-- Quick Links --}}
-            <div>
-                <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Quick Links</h4>
-                <ul class="space-y-2.5 text-sm">
-                    <li><a href="{{ url('/') }}" class="hover:text-white transition-colors">Home</a></li>
-                    <li><a href="{{ url('/shop') }}" class="hover:text-white transition-colors">Shop</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
-                    <li><a href="{{ url('/contact') }}" class="hover:text-white transition-colors">Contact</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+            <div class="col-lg-2 col-6 col-md-3">
+                <h6 class="fw-bold text-dark text-uppercase mb-3" style="font-size: 12px; letter-spacing: 1px;">Quick Links</h6>
+                <ul class="list-unstyled d-flex flex-column gap-2">
+                    <li><a href="#" class="text-muted text-decoration-none small hover:text-dark transition-colors">Home</a></li>
+                    <li><a href="#" class="text-muted text-decoration-none small hover:text-dark transition-colors">Shop All</a></li>
+                    <li><a href="#" class="text-muted text-decoration-none small hover:text-dark transition-colors">Categories</a></li>
+                    <li><a href="#" class="text-muted text-decoration-none small hover:text-dark transition-colors">About Us</a></li>
                 </ul>
             </div>
 
-            {{-- Customer Care --}}
-            <div>
-                <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Customer Care</h4>
-                <ul class="space-y-2.5 text-sm">
-                    <li><a href="#" class="hover:text-white transition-colors">My Account</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Order Tracking</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Wishlist</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Returns & Refunds</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+            <div class="col-lg-2 col-6 col-md-3">
+                <h6 class="fw-bold text-dark text-uppercase mb-3" style="font-size: 12px; letter-spacing: 1px;">Customer Care</h6>
+                <ul class="list-unstyled d-flex flex-column gap-2">
+                    <li><a href="#" class="text-muted text-decoration-none small hover:text-dark transition-colors">FAQ</a></li>
+                    <li><a href="#" class="text-muted text-decoration-none small hover:text-dark transition-colors">Shipping Info</a></li>
+                    <li><a href="#" class="text-muted text-decoration-none small hover:text-dark transition-colors">Returns & Refunds</a></li>
+                    <li><a href="#" class="text-muted text-decoration-none small hover:text-dark transition-colors">Contact Support</a></li>
                 </ul>
             </div>
 
-            {{-- Contact --}}
-            <div>
-                <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Get In Touch</h4>
-                <ul class="space-y-3 text-sm">
-                    <li class="flex items-start gap-3">
-                        <svg class="w-4 h-4 mt-0.5 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                        <span>123 Main Street, Colombo 03, Sri Lanka</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <svg class="w-4 h-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                        <a href="mailto:hello@multishop.com" class="hover:text-white transition-colors">hello@multishop.com</a>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <svg class="w-4 h-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                        <a href="tel:+94112345678" class="hover:text-white transition-colors">+94 11 234 5678</a>
-                    </li>
-                </ul>
+            <div class="col-lg-4 col-md-6">
+                <h6 class="fw-bold text-dark text-uppercase mb-3" style="font-size: 12px; letter-spacing: 1px;">Store Contact</h6>
+                <p class="text-muted small mb-1">📍 123, Main Street, Colombo, Sri Lanka</p>
+                <p class="text-muted small mb-3">✉️ support@multishop.com</p>
+
+                <div class="mt-4">
+                    <h6 class="fw-bold text-muted text-uppercase mb-2" style="font-size: 10px; letter-spacing: 0.5px;">Secure Payments</h6>
+                    <div class="d-flex gap-2">
+                        <span class="badge border bg-light text-dark px-2.5 py-2 fw-semibold rounded" style="font-size: 10px; border-color: #e2e8f0 !important;">VISA</span>
+                        <span class="badge border bg-light text-dark px-2.5 py-2 fw-semibold rounded" style="font-size: 10px; border-color: #e2e8f0 !important;">MasterCard</span>
+                        <span class="badge border bg-light text-dark px-2.5 py-2 fw-semibold rounded" style="font-size: 10px; border-color: #e2e8f0 !important;">Amex</span>
+                    </div>
+                </div>
             </div>
 
         </div>
-    </div>
 
-    {{-- Bottom Bar --}}
-    <div class="border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
-            <p>&copy; {{ date('Y') }} MultiShop. All rights reserved.</p>
-            <div class="flex gap-5">
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
-            </div>
+        <hr class="my-4 bg-light">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <p class="text-muted small mb-0">
+                &copy; {{ date('Y') }} MultiShop. All rights reserved.
+            </p>
+            <p class="text-muted small mb-0" style="font-size: 11px;">
+                Designed with ❤️ in Sri Lanka
+            </p>
         </div>
     </div>
-
 </footer>
