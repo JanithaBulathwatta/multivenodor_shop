@@ -2,6 +2,7 @@
 namespace App\Repository;
 
 use App\Repository\Interfaces\ProductServiceInterface;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductServiceRepository implements ProductServiceInterface{
@@ -24,7 +25,7 @@ class ProductServiceRepository implements ProductServiceInterface{
             'stock_quantity'=>$stockQuantity,
             'product_image'=>$imagePath,
             'category_id'=>$categoryID,
-            'user_id'=>1
+            'user_id'=>Auth::id()
         ]);
 
         return[
@@ -38,6 +39,7 @@ class ProductServiceRepository implements ProductServiceInterface{
         $resultSQL = DB::table('products')
                         ->select('id','product_name','description','price','stock_quantity','product_image','category_id')
                         ->where('record_status',1)
+                        ->where('user_id',Auth::id())
                         ->get();
 
         return[

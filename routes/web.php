@@ -17,15 +17,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //home and show products(customer and vendor) this is the home page
+    Route::get('/get-show-products',[MainHomeController::class,'loadShowProducts'])->name('home.show');
 });
 
-//add and manage products
-Route::get('/get-add-products',[ProductController::class, 'loadAddProducts'])->name('product.add');
-Route::post('/set-product-creat',[ProductController::class, 'setProductCreate']);
-Route::get('/get-product-details',[ProductController::class,'getProductDetails']);
-Route::post('/set-product-delete',[ProductController::class,'setProductDelete']);
-Route::post('/set-product-update',[ProductController::class,'setProductUpdate']);
+Route::middleware(['auth','role:vendor'])->group(function(){
+    //add and manage products(only for vendor)
+    Route::get('/get-add-products',[ProductController::class, 'loadAddProducts'])->name('product.add');
+    Route::post('/set-product-creat',[ProductController::class, 'setProductCreate']);
+    Route::get('/get-product-details',[ProductController::class,'getProductDetails']);
+    Route::post('/set-product-delete',[ProductController::class,'setProductDelete']);
+    Route::post('/set-product-update',[ProductController::class,'setProductUpdate']);
 
-//home and show products
-Route::get('/get-show-products',[MainHomeController::class,'loadShowProducts'])->name('home.show');
+});
 require __DIR__.'/auth.php';
