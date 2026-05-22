@@ -11,4 +11,9 @@ class AddToCartService{
         return $result;
     }
 
+    public static function getCartCount($request){
+        $result = app()->make(AddToCartServiceInterface::class)->getCartCount($request);
+        return $result;
+    }
+
 }

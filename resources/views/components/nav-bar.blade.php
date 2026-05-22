@@ -95,7 +95,7 @@
                     </svg>
                     <span
                         class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger font-bold flex items-center justify-center"
-                        style="font-size: 10px; width: 18px; height: 18px; padding: 0;">0</span>
+                        style="font-size: 10px; width: 18px; height: 18px; padding: 0;" id="lblCartCount">0</span>
                 </a>
 
             </div>
@@ -118,3 +118,5 @@
         </div>
     </div>
 </div>
+{{-- <script src="{{ asset('controllers/add-to-cart.js') }}?v={{ filemtime(public_path('controllers/add-to-cart.js')) }}"></script> --}}
+

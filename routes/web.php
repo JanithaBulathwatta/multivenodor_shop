@@ -19,16 +19,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //home and show products(customer and vendor) this is the home page
+    //home
     Route::get('/get-show-products',[MainHomeController::class,'loadShowProducts'])->name('home.show');
 
     //add to cart
     Route::get('/get-add-to-cart',[AddCartController::class,'loadAddToCart'])->name('cart.show');
     Route::post('/set-add-to-cart',[AddCartController::class,'setAddToCart']);
+    Route::get('/get-cart-count',[AddCartController::class,'getCartCount']);
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){
-    //add and manage products(only for vendor)
+    //vendor
     Route::get('/get-add-products',[ProductController::class, 'loadAddProducts'])->name('product.add');
     Route::post('/set-product-creat',[ProductController::class, 'setProductCreate']);
     Route::get('/get-product-details',[ProductController::class,'getProductDetails']);

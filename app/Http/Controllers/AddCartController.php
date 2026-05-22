@@ -15,4 +15,9 @@ class AddCartController extends Controller
         $response = AddToCartService::setAddToCart($request);
         return response()->json($response);
     }
+
+    public function getCartCount(Request $request){
+        $response = AddToCartService::getCartCount($request);
+        return response()->json($response);
+    }
 }
