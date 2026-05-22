@@ -4,11 +4,13 @@ $(document).ready(function(){
 
     $(document).on('click','.btnView',function(e){
         e.preventDefault();
+        let id = $(this).data('id');
         let name = $(this).data('name');
         let price = $(this).data('price');
         let desc = $(this).data('desc');
         let img = $(this).data('image');
 
+        $('#hdnProductId').val(id);
         $('#modalProdName').text(name);
         $('#modalProdPrice').text('Rs. ' + price);
         $('#modalProdDesc').text(desc);

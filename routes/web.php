@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainHomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -19,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //home and show products(customer and vendor) this is the home page
     Route::get('/get-show-products',[MainHomeController::class,'loadShowProducts'])->name('home.show');
+    Route::get('/get-add-to-cart',[CartController::class,'loadAddToCart'])->name('cart.show');
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){

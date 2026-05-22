@@ -85,7 +85,7 @@
                     </ul>
                 </div>
 
-                <a href="#"
+                <a href="{{ route('cart.show') }}"
                     class="btn btn-link p-2 text-dark rounded-circle border-0 text-decoration-none position-relative"
                     style="background: #f8fafc;">
                     <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"

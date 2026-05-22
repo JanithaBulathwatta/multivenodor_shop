@@ -93,6 +93,7 @@
                             <div class="mt-3 d-flex gap-2">
                                 <a href="#" class="btn flex-fill fw-semibold btnView"
                                     style="background:#0f172a; color:#fff; font-size:0.82rem; border-radius:10px; padding:8px 0; transition: background 0.2s;"
+                                    data-id = "{{ $product->id }}"
                                     data-name="{{ $product->product_name }}"
                                     data-price="{{ number_format($product->price, 2) }}"
                                     data-desc="{{ $product->description }}"
@@ -123,6 +124,7 @@
         </div>
 
         <div class="modal fade" id="divModalProductView" tabindex="-1" aria-hidden="true">
+            <input type="hidden" id="hdnProductId" name="hdnProductId">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
 
@@ -184,7 +186,7 @@
 
                                 <div class="d-flex flex-column flex-sm-row gap-2 mt-2">
                                     <button
-                                        class="btn btn-dark btn-lg px-4 py-2.5 fs-6 fw-semibold rounded-3 d-flex align-items-center justify-content-center gap-2 shadow-sm border-0 flex-grow-1"
+                                        class="btn btn-dark btn-lg px-4 py-2.5 fs-6 fw-semibold rounded-3 d-flex align-items-center justify-content-center gap-2 shadow-sm border-0 flex-grow-1 btnAddToCart"
                                         style="background: #0f172a; transition: all 0.2s;"
                                         onmouseover="this.style.background='#1e293b'"
                                         onmouseout="this.style.background='#0f172a'">
@@ -216,7 +218,9 @@
 @endsection
 
 @section('customJS')
+    <script> const USER = "{{ auth()->user()->id }}"; </script>
     <script
         src="{{ asset('controllers/show-product.js') }}?v={{ filemtime(public_path('controllers/show-product.js')) }}">
     </script>
+    <script src="{{ asset('controllers/add-to-cart.js') }}?v={{ filemtime(public_path('controllers/add-to-cart.js')) }}"></script>
 @endsection

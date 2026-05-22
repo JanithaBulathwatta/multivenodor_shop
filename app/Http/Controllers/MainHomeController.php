@@ -11,7 +11,9 @@ class MainHomeController extends Controller
         $products = DB::table('products')
                     ->where('stock_quantity', '>', 0)
                     ->where('record_status',1)
+                    ->orderBy('id','desc')
                     ->get();
+                    
         return view('pages.show-product',compact('products'));
     }
 }
