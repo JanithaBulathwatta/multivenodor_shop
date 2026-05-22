@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\AddCartController;
 use App\Http\Controllers\MainHomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -18,9 +18,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     //home and show products(customer and vendor) this is the home page
     Route::get('/get-show-products',[MainHomeController::class,'loadShowProducts'])->name('home.show');
-    Route::get('/get-add-to-cart',[CartController::class,'loadAddToCart'])->name('cart.show');
+
+    //add to cart
+    Route::get('/get-add-to-cart',[AddCartController::class,'loadAddToCart'])->name('cart.show');
+    Route::post('/set-add-to-cart',[AddCartController::class,'setAddToCart']);
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){

@@ -5,9 +5,24 @@ $(document).ready(function(){
         let quantity = $('#txtQuantity').val();
         let user_id = USER;
 
-        console.log('id: ',productId);
-        console.log('quantity: ',quantity);
-        console.log('user_id: ',user_id);
+        let data = {
+            'productId':productId,
+            'quantity':quantity,
+            'user_id':user_id
+        }
+
+        $.ajax({
+            type:"POST",
+            url:"/set-add-to-cart",
+            data:data,
+            dataType:"json",
+            success:function(response){
+
+            },
+            error:function(xhr){
+
+            }
+        });
     })
 
 });
