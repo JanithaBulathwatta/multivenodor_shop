@@ -52,4 +52,28 @@ class AddToCartServiceRepository implements AddToCartServiceInterface{
         ];
     }
 
+    public function getCartDetails($request){
+
+        $userID = Auth::id();
+
+        $DataSet = "select p.product_name,
+                           p.description,
+                           p.price,
+                           p.product_image,
+                           c.quantity
+                           from products p
+                           inner join cart c on c.product_id = p.id
+                           where c.user_id = '$userID'
+                           and c.record_status = 1
+                           and p.record_status = 1";
+
+        $resultSet = DB::select($DataSet);
+
+        return[
+            "status"=>200,
+            "dataSet"=>$resultSet
+        ];
+
+    }
+
 }

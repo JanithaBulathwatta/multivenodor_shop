@@ -16,4 +16,9 @@ class AddToCartService{
         return $result;
     }
 
+    public static function getCartDetails($request){
+        $result = app()->make(AddToCartServiceInterface::class)->getCartDetails($request);
+        return $result;
+    }
+
 }

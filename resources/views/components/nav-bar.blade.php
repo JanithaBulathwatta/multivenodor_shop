@@ -59,7 +59,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-3 py-2 mt-2"
                         aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item px-4 py-2 text-sm fw-medium" href="#">My Profile</a></li>
+                        <li><a class="dropdown-item px-4 py-2 text-sm fw-medium" href="{{ route('profile.edit') }}">My Profile</a></li>
                         <li><a class="dropdown-item px-4 py-2 text-sm fw-medium" href="#">Orders</a></li>
                         <li>
                             @auth
