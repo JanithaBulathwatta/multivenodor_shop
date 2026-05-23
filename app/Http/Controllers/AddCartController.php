@@ -26,5 +26,10 @@ class AddCartController extends Controller
         return response()->json($response);
     }
 
+    public function setCartRemove(Request $request){
+        $response = AddToCartService::setCartRemove($request);
+        return response()->json($response);
+    }
+
 
 }

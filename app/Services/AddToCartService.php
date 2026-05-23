@@ -21,4 +21,9 @@ class AddToCartService{
         return $result;
     }
 
+    public static function setCartRemove($request){
+        $result = app()->make(AddToCartServiceInterface::class)->setCartRemove($request);
+        return $result;
+    }
+
 }

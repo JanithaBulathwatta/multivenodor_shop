@@ -93,10 +93,12 @@ $(document).ready(function(){
                                             </div>
 
                                             <div class="flex-shrink-0 ms-3 d-flex flex-column gap-2 text-end" style="min-width: 140px;">
-                                                <button class="btn btn-success btn-sm w-100 py-2 fw-bold shadow-sm d-flex align-items-center justify-content-center gap-1">
+                                                <button class="btn btn-success btn-sm w-100 py-2 fw-bold shadow-sm d-flex align-items-center justify-content-center gap-1"
+                                                >
                                                     Buy Now
                                                 </button>
-                                                <button class="btn btn-outline-danger btn-sm w-100 py-2 d-flex align-items-center justify-content-center gap-1">
+                                                <button class="btn btn-outline-danger btn-sm w-100 py-2 d-flex align-items-center justify-content-center gap-1 btnRemove"
+                                                data-id=${item.id} data-productid=${item.product_id} data-userid=${item.user_id}>
                                                     Remove
                                                 </button>
                                             </div>
@@ -111,7 +113,38 @@ $(document).ready(function(){
             error:function(xhr){
                 console.log(xhr.responseText);
             }
-        })
+        });
     }
+
+    $(document).on('click','.btnRemove',function(){
+        let cartId = $(this).data('id');
+        let productId = $(this).data('productid');
+        let userId = $(this).data('userid');
+
+        console.log('pid',productId);
+
+        let data = {
+            "cartId":cartId,
+            "productId":productId,
+            "userId":userId
+        }
+
+        if(confirm('Are you sure?')){
+            $.ajax({
+                type:"POST",
+                url:"/set-car-item-remove",
+                data:data,
+                dataType:"json",
+                success:function(response){
+                    alert(response.message);
+                    getCartDetails();
+                    getCount();
+                },
+                error:function(xhr){
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    });
 
 });

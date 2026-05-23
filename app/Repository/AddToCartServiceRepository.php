@@ -60,7 +60,10 @@ class AddToCartServiceRepository implements AddToCartServiceInterface{
                            p.description,
                            p.price,
                            p.product_image,
-                           c.quantity
+                           c.quantity,
+                           c.id,
+                           c.user_id,
+                           c.product_id
                            from products p
                            inner join cart c on c.product_id = p.id
                            where c.user_id = '$userID'
@@ -74,6 +77,26 @@ class AddToCartServiceRepository implements AddToCartServiceInterface{
             "dataSet"=>$resultSet
         ];
 
+    }
+
+    public function setCartRemove($request){
+        $cartId = $request->cartId;
+        $cartProductId = $request->productId;
+        $cartUserId = $request->userId;
+
+        DB::table('cart')
+            ->where('id',$cartId)
+            ->where('user_id',$cartUserId)
+            ->where('product_id',$cartProductId)
+            ->update([
+                'record_status'=>0,
+                'updated_at'=>Carbon::now()
+            ]);
+
+        return[
+            "status"=>200,
+            "message"=>['item removed']
+        ];
     }
 
 }
