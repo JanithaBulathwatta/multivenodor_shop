@@ -16,6 +16,7 @@ class AddToCartServiceRepository implements AddToCartServiceInterface{
         $exists = DB::table('cart')
                         ->where('product_id',$productId)
                         ->where('user_id',$userId)
+                        ->where('record_status',1)
                         ->exists();
 
         if($exists){

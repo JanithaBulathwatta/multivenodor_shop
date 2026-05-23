@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddCartController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MainHomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -28,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/get-cart-count',[AddCartController::class,'getCartCount']);
     Route::get('/get-cart-details',[AddCartController::class, 'getCartDetails']);
     Route::post('/set-car-item-remove',[AddCartController::class,'setCartRemove']);
+
+    //customer
+    Route::get('/get-add-customer-details',[CustomerController::class,'loadCustomerDetails'])->name('customer.show');
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){

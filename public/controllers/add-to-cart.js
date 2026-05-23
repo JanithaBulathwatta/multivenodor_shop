@@ -22,7 +22,12 @@ $(document).ready(function(){
             dataType:"json",
             success:function(response){
                 if(response.status == 200){
-                    alert(response.message)
+                    Swal.fire({
+                    title: 'Success!',
+                    text: response.message,
+                    icon: 'success',
+                    confirmButtonText: 'ok'
+                });
                     $('#divModalProductView').modal('hide');
                     $('#txtQuantity').val(1);
                     getCount();
@@ -128,23 +133,32 @@ $(document).ready(function(){
             "productId":productId,
             "userId":userId
         }
-
-        if(confirm('Are you sure?')){
-            $.ajax({
-                type:"POST",
-                url:"/set-car-item-remove",
-                data:data,
-                dataType:"json",
-                success:function(response){
-                    alert(response.message);
-                    getCartDetails();
-                    getCount();
-                },
-                error:function(xhr){
-                    console.log(xhr.responseText);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to remove this item from the cart",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, Remove it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                    $.ajax({
+                        type:"POST",
+                        url:"/set-car-item-remove",
+                        data:data,
+                        dataType:"json",
+                        success:function(response){
+                            Swal.fire('Deleted!', 'Item Removed', 'success');
+                            getCartDetails();
+                            getCount();
+                        },
+                        error:function(xhr){
+                            console.log(xhr.responseText);
+                        }
+                    });
                 }
-            });
-        }
+        });
     });
 
 });
