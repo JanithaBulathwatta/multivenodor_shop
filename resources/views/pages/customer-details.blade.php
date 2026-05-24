@@ -16,7 +16,7 @@
                             <p class="text-muted small">Please fill out the information below</p>
                         </div>
 
-                        <form action="#" method="POST" id="frmCustomerForm">
+                        <form action="#"  id="frmCustomerForm">
 
                             <div class="mb-3">
                                 <label for="customerName" class="form-label small fw-bold text-secondary">Customer
@@ -56,7 +56,7 @@
                                 </select>
                             </div>
 
-                            <button type="submit"
+                            <button 
                                 class="btn btn-primary w-100 py-2 fw-bold shadow-sm d-flex align-items-center justify-content-center gap-2" id="btnSubmit">
                                 Submit Details
                             </button>

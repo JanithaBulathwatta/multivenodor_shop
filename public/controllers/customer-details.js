@@ -3,44 +3,44 @@ $(document).ready(function(){
     $("#frmCustomerForm").validate({
 
         rules: {
-            customer_name: {
+            txtCustomerName: {
                 required: true,
                 minlength: 3
             },
-            mobile: {
+            txtMobile: {
                 required: true,
                 digits: true,
                 minlength: 10,
-                maxlength: 12
+                maxlength: 10
             },
-            address: {
+            txtAddress: {
                 required: true
             },
-            postal_code: {
+            txtPostalCode: {
                 required: true,
                 digits: true
             },
-            country: {
+            txtCountry: {
                 required: true
             }
         },
         messages: {
-            customer_name: {
+            txtCustomerName: {
                 required: "This field is required.",
                 minlength: "At least three letters need"
             },
-            mobile: {
+            txtMobile: {
                 required: "This field is required.",
                 digits: "only digits",
-                minlength: "Only 10 digits"
+                minlength: "10 digits should include"
             },
-            address: {
+            txtAddress: {
                 required: "This field is required."
             },
-            postal_code: {
+            txtPostalCode: {
                 required: "This field is required.",
             },
-            country: {
+            txtCountry: {
                 required: "This field is required."
             }
         },
@@ -56,7 +56,8 @@ $(document).ready(function(){
         }
     });
 
-    $('#btnSubmit').click(function(){
+    $('#btnSubmit').click(function(e){
+        e.preventDefault();
 
         let name = $('#txtCustomerName').val();
         let address = $('#txtAddress').val();
@@ -72,6 +73,8 @@ $(document).ready(function(){
             "postalCode":postalCode
         }
 
+        console.log('data',data);
+
         if($("#frmCustomerForm").valid()){
             setCustomerDetails(data);
         }
@@ -80,14 +83,30 @@ $(document).ready(function(){
     function setCustomerDetails(data){
         $.ajax({
             type: "POST",
-            url: "",
+            url: "/set-customer-details",
             data: data,
             dataType: "json",
-            success: function (response) {
-                
+            success:function(response){
+                if(response.status == 200){
+                    Swal.fire({
+                    title: 'Success!',
+                    text: response.message,
+                    icon: 'success',
+                    confirmButtonText: 'ok'
+                });
+                $('#frmCustomerForm')[0].reset();
+                }else{
+                    Swal.fire({
+                    title: 'Warning!',
+                    text: response.message,
+                    icon: 'warning',
+                    confirmButtonText: 'ok'
+                });
+                $('#frmCustomerForm')[0].reset();
+                }
             },
             error:function(xhr){
-
+                console.log(xhr.responseText);
             }
         });
     }
