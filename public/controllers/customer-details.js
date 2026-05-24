@@ -56,4 +56,40 @@ $(document).ready(function(){
         }
     });
 
+    $('#btnSubmit').click(function(){
+
+        let name = $('#txtCustomerName').val();
+        let address = $('#txtAddress').val();
+        let mobile = $('#txtMobile').val();
+        let country = $('#txtCountry').val();
+        let postalCode = $('#txtPostalCode').val();
+
+        data = {
+            "name":name,
+            "address":address,
+            "mobile":mobile,
+            "country":country,
+            "postalCode":postalCode
+        }
+
+        if($("#frmCustomerForm").valid()){
+            setCustomerDetails(data);
+        }
+    });
+
+    function setCustomerDetails(data){
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: data,
+            dataType: "json",
+            success: function (response) {
+                
+            },
+            error:function(xhr){
+
+            }
+        });
+    }
+
 });

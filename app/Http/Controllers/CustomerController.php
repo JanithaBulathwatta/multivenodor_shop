@@ -9,4 +9,8 @@ class CustomerController extends Controller
     public function loadCustomerDetails(){
         return view('pages.customer-details');
     }
+
+    public function setCustomerDetails(Request $request){
+        
+    }
 }

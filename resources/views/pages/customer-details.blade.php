@@ -21,31 +21,31 @@
                             <div class="mb-3">
                                 <label for="customerName" class="form-label small fw-bold text-secondary">Customer
                                     Name</label>
-                                <input type="text" class="form-control form-control-sm py-2 text-dark" id="customerName"
-                                    name="customer_name" placeholder="John Doe" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
+                                <input type="text" class="form-control form-control-sm py-2 text-dark" id="txtCustomerName"
+                                    name="txtCustomerName" placeholder="John Doe" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                             </div>
 
                             <div class="mb-3">
-                                <label for="mobile" class="form-label small fw-bold text-secondary">Mobile Number</label>
-                                <input type="tel" class="form-control form-control-sm py-2 text-dark" id="mobile"
-                                    name="mobile" placeholder="077XXXXXXX" required>
+                                <label for="txtMobile" class="form-label small fw-bold text-secondary">Mobile Number</label>
+                                <input type="tel" class="form-control form-control-sm py-2 text-dark" id="txtMobile"
+                                    name="txtMobile" placeholder="077XXXXXXX" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="address" class="form-label small fw-bold text-secondary">Address</label>
-                                <textarea class="form-control form-control-sm py-2 text-dark" id="address" name="address" rows="2"
+                                <label for="txtAddress" class="form-label small fw-bold text-secondary">Address</label>
+                                <textarea class="form-control form-control-sm py-2 text-dark" id="txtAddress" name="txtAddress" rows="2"
                                     placeholder="Street Address, City" required></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label for="postalCode" class="form-label small fw-bold text-secondary">Postal Code</label>
-                                <input type="text" class="form-control form-control-sm py-2 text-dark" id="postalCode"
-                                    name="postal_code" placeholder="20000" required>
+                                <input type="text" class="form-control form-control-sm py-2 text-dark" id="txtPostalCode"
+                                    name="txtPostalCode" placeholder="20000" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="country" class="form-label small fw-bold text-secondary">Country</label>
-                                <select class="form-select form-select-sm py-2 text-dark" id="country" name="country"
+                                <select class="form-select form-select-sm py-2 text-dark" id="txtCountry" name="txtCountry"
                                     required>
                                     <option value="" selected disabled>Select Country</option>
                                     <option value="Sri Lanka">Sri Lanka</option>
@@ -57,7 +57,7 @@
                             </div>
 
                             <button type="submit"
-                                class="btn btn-primary w-100 py-2 fw-bold shadow-sm d-flex align-items-center justify-content-center gap-2">
+                                class="btn btn-primary w-100 py-2 fw-bold shadow-sm d-flex align-items-center justify-content-center gap-2" id="btnSubmit">
                                 Submit Details
                             </button>
 

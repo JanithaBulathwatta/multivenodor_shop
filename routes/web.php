@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     //customer
     Route::get('/get-add-customer-details',[CustomerController::class,'loadCustomerDetails'])->name('customer.show');
+    Route::post('/set-customer-details',[CustomerController::class,'setCustomerDetails']);
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){
