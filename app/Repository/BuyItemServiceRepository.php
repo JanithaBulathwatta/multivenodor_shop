@@ -26,7 +26,8 @@ class BuyItemServiceRepository implements BuyItemServiceInterface{
 
         return[
             "status"=>200,
-            "result"=>$cusResults
+            "cusResult"=>$cusResults,
+            "productResult"=>$productResult
         ];
     }
 

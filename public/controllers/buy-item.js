@@ -1,13 +1,14 @@
 $(document).ready(function(){
 
-    $('#btnBuy').click(function(e){
-        e.preventDefault();
-        let targetUrl = $(this).attr('href');
+    getOrderDetails();
+
+    function getOrderDetails(){
         $('#divModalProductView').modal('hide');
-        let producuID = $('#hdnProductId').val();
+
+        let savedProductId = sessionStorage.getItem('transferProductId');
 
         data = {
-            productId:producuID
+            productId:savedProductId
         }
 
         $.ajax({
@@ -16,12 +17,41 @@ $(document).ready(function(){
             data: data,
             dataType: "json",
             success: function (response) {
-                console.log(response.result);
-                let userResult = response.result;
-                window.location.href = targetUrl;
-                console.log('result',userResult);
+                let userResult = response.cusResult;
+                let productResult = response.productResult;
+
+                userResult.forEach(function(item){
+                    $('#txtCusName').val(item.cus_name);
+                    $('#txtCusMobile').val(item.mobile);
+                    $('#txtCusAddress').val(item.address);
+                });
+
+                productResult.forEach(function(item){
+                    $('#unit-price').val(item.price);
+                    $('#unit-price').text('Rs. '+item.price+'.00');
+                    $('#txtProductDescription').text(item.description);
+                    $('#txtProductName').text(item.product_name);
+                    let image_source = `/storage/${item.product_image}`;
+                    $('#imgProdcutImage').attr('src',image_source);
+                });
+
+                let subtotal = parseInt($('#unit-price').val());
+                $('#subtotal').text('Rs. '+subtotal+'.00');
+                let fullToatal = subtotal + 350;
+                $('#txtTotalPrice').text('Rs. '+ fullToatal+ '.00');
+
             }
         });
+    }
+
+    $(document).on('change','#quantity',function(e){
+        e.preventDefault();
+        let qval = $('#quantity').val();
+        let curentVal = parseInt($('#unit-price').val());
+        let total = curentVal*qval;
+        $('#subtotal').text('Rs. '+total+'.00');
+        let fullToatal = total +350;
+        $('#txtTotalPrice').text('Rs. '+ fullToatal+ '.00');
     })
 });
 

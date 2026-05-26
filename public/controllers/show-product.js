@@ -15,6 +15,8 @@ $(document).ready(function(){
         $('#modalProdDesc').text(desc);
         $('#modalProdImage').attr('src', img);
         $('#divModalProductView').modal('show');
+        
+        sessionStorage.setItem('transferProductId', id);
 
     });
 
