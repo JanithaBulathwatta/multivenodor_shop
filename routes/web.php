@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddCartController;
+use App\Http\Controllers\BuyItemController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MainHomeController;
 use App\Http\Controllers\ProductController;
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
     //customer
     Route::get('/get-add-customer-details',[CustomerController::class,'loadCustomerDetails'])->name('customer.show');
     Route::post('/set-customer-details',[CustomerController::class,'setCustomerDetails']);
+
+    //buy item
+    Route::get('/get-load-buy-item',[BuyItemController::class,'loadBuyItem'])->name('buyItem.show');
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){

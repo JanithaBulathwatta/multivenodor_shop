@@ -197,13 +197,13 @@
                                         </svg>
                                         Add to Cart
                                     </button>
-                                    <button
+                                    <a href="{{ route('buyItem.show') }}"
                                         class="btn btn-primary btn-lg px-4 py-2.5 fs-6 fw-semibold rounded-3 shadow-sm border-0 flex-grow-1"
                                         style="background: #2563eb; transition: all 0.2s;"
                                         onmouseover="this.style.background='#1d4ed8'"
-                                        onmouseout="this.style.background='#2563eb'">
+                                        onmouseout="this.style.background='#2563eb'" id="btnBuy">
                                         Buy Now
-                                    </button>
+                                    </a>
                                 </div>
 
                             </div>
@@ -223,4 +223,5 @@
         src="{{ asset('controllers/show-product.js') }}?v={{ filemtime(public_path('controllers/show-product.js')) }}">
     </script>
     <script src="{{ asset('controllers/add-to-cart.js') }}?v={{ filemtime(public_path('controllers/add-to-cart.js')) }}"></script>
+    <script src="{{ asset('controllers/buy-item.js') }}?v={{ filemtime(public_path('controllers/buy-item.js')) }}"></script>
 @endsection
