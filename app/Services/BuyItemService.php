@@ -10,4 +10,9 @@ class BuyItemService{
         $result = app()->make(BuyItemServiceInterface::class)->getOrderItemDetails($request);
         return $result;
     }
+
+    public static function setOrderDetails($request){
+        $result = app()->make(BuyItemServiceInterface::class)->setOrderDetails($request);
+        return $result;
+    }
 }

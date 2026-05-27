@@ -1,12 +1,12 @@
 $(document).ready(function(){
-
+    $('#quantity').val(1);
     getOrderDetails();
 
     function getOrderDetails(){
         $('#divModalProductView').modal('hide');
 
         let savedProductId = sessionStorage.getItem('transferProductId');
-
+        $('#hdnProductId').val(savedProductId);
         data = {
             productId:savedProductId
         }
@@ -61,20 +61,55 @@ $(document).ready(function(){
         let totalAmpount = $('#txtTotalPrice').val();
         let shippingAddress = $('#txtCusAddress').val();
         let shippingFee = $('#shipping').data('fee');
-
+        let productId = $('#hdnProductId').val();
+        let quantity = $('#quantity').val();
+        let unitPrice = $('#unit-price').val();
+        let cusMobile = $('#txtCusMobile').val();
+        let cusName = $('#txtCusName').val();
         data = {
             "totalAmpount":totalAmpount,
             "shippingAddress":shippingAddress,
-            "shippingFee":shippingFee
+            "shippingFee":shippingFee,
+            "productId":productId,
+            "quantity":quantity,
+            "unitPrice":unitPrice,
+            "cusMobile":cusMobile,
+            "cusName":cusName
         }
 
         $.ajax({
             type: "POST",
-            url: "url",
+            url: "/set-order-details",
             data: data,
             dataType: "json",
             success: function (response) {
-
+                if(response.status == 200){
+                    Swal.fire({
+                        title: '<strong>Order Placed!</strong>',
+                        icon: 'success',
+                        html:
+                            'Your order is succesfull. <br>' +
+                            '</b><br><br>' +
+                            '<small class="text-muted">We will send a message you shortly to confirm the order..</small>',
+                        showCloseButton: false,
+                        showCancelButton: false,
+                        focusConfirm: true,
+                        confirmButtonText: 'Continue Shopping 🛒',
+                        confirmButtonColor: '#1e293b',
+                        background: '#ffffff',
+                        customClass: {
+                            popup: 'rounded-4',
+                            confirmButton: 'px-4 py-2 fw-bold'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '/get-show-products';
+                        }
+                    });
+                }
+            },
+            error:function(xhr){
+                console.log(xhr.responseText);
             }
         });
     })

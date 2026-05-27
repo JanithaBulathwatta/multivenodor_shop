@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     //buy item
     Route::get('/get-load-buy-item',[BuyItemController::class,'loadBuyItem'])->name('buyItem.show');
     Route::get('/get-ordered-item-details',[BuyItemController::class,'getOrderItemDetails']);
+    Route::post('/set-order-details',[BuyItemController::class, 'setOrderDetails']);
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){

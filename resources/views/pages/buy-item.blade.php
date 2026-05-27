@@ -49,6 +49,7 @@
 @endsection
 
 @section('content')
+    <input type="hidden" id="hdnProductId" name="hdnProductId" value="">
     <div class="container-fluid p-0 overflow-hidden" style="min-height: 100vh; background-color: #ffffff;">
     <div class="row g-0" style="min-height: 100vh;">
 
