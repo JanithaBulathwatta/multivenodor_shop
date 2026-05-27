@@ -2,7 +2,7 @@
 
 @section('customCSS')
 <style>
-    /* Floating Label Inputs ලස්සන කරා */
+
     .modern-input {
         border: none !important;
         border-bottom: 2px solid #e2e8f0 !important;
@@ -17,7 +17,7 @@
         border-bottom-color: #2563eb !important;
     }
 
-    /* Textarea එක */
+
     .modern-textarea {
         border: 2px solid #e2e8f0 !important;
         border-radius: 10px !important;
@@ -27,7 +27,7 @@
         resize: none;
     }
 
-    /* Quantity Input */
+
     .qty-input {
         border: 2px solid #e2e8f0 !important;
         border-radius: 20px !important;
@@ -36,7 +36,7 @@
         font-size: 0.9rem;
     }
 
-    /* Premium Button Hover */
+
     .premium-btn:hover {
         background-color: #0f172a !important;
         transform: translateY(-1px);
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="mt-4 ms-1">
-                    <a href="/" class="text-decoration-none text-muted small hover-underline"><i class="bi bi-arrow-left me-1"></i> Return to shop</a>
+                    <a href="#" class="text-decoration-none text-muted small hover-underline"><i class="bi bi-arrow-left me-1"></i> Return to shop</a>
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@
                     <span class="fw-extrabold text-dark fs-3" id="txtTotalPrice" style="letter-spacing: -0.5px;"></span>
                 </div>
 
-                <button type="submit" class="btn w-100 text-white fw-bold premium-btn"
+                <button type="submit" class="btn w-100 text-white fw-bold premium-btn" id="btnConfirmOrder"
                     style="background-color: #1e293b; border-radius: 30px; padding: 14px; font-size: 0.95rem; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(30, 41, 59, 0.15);">
                     Confirm Order (Cash on Delivery)
                 </button>

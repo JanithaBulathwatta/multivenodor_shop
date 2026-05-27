@@ -39,6 +39,7 @@ $(document).ready(function(){
                 $('#subtotal').text('Rs. '+subtotal+'.00');
                 let fullToatal = subtotal + 350;
                 $('#txtTotalPrice').text('Rs. '+ fullToatal+ '.00');
+                $('#txtTotalPrice').val(fullToatal);
 
             }
         });
@@ -52,6 +53,30 @@ $(document).ready(function(){
         $('#subtotal').text('Rs. '+total+'.00');
         let fullToatal = total +350;
         $('#txtTotalPrice').text('Rs. '+ fullToatal+ '.00');
+        $('#txtTotalPrice').val(fullToatal);
+    });
+
+    $('#btnConfirmOrder').click(function(e){
+        e.preventDefault();
+        let totalAmpount = $('#txtTotalPrice').val();
+        let shippingAddress = $('#txtCusAddress').val();
+        let shippingFee = $('#shipping').data('fee');
+
+        data = {
+            "totalAmpount":totalAmpount,
+            "shippingAddress":shippingAddress,
+            "shippingFee":shippingFee
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "url",
+            data: data,
+            dataType: "json",
+            success: function (response) {
+
+            }
+        });
     })
 });
 
