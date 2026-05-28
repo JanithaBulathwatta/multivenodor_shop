@@ -97,6 +97,8 @@ $(document).ready(function(){
                         focusConfirm: true,
                         confirmButtonText: 'Continue Shopping 🛒',
                         confirmButtonColor: '#1e293b',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
                         background: '#ffffff',
                         customClass: {
                             popup: 'rounded-4',
