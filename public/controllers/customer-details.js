@@ -90,18 +90,23 @@ $(document).ready(function(){
                 if(response.status == 200){
                     Swal.fire({
                     title: 'Success!',
-                    text: response.message,
+                    html: `<h4>${response.message}</h4><p class="text-muted mt-2">Now you can order any product.</p>`,
                     icon: 'success',
-                    confirmButtonText: 'ok'
-                });
-                $('#frmCustomerForm')[0].reset();
-                }else{
-                    Swal.fire({
-                    title: 'Warning!',
-                    text: response.message,
-                    icon: 'warning',
-                    confirmButtonText: 'ok'
-                });
+                    showCloseButton: false,
+                    showCancelButton: false,
+                    focusConfirm: true,
+                    confirmButtonText: 'Shop now 🛒',
+                    confirmButtonColor: '#1e293b',
+                    background: '#ffffff',
+                    customClass: {
+                        popup: 'rounded-4',
+                        confirmButton: 'px-4 py-2 fw-bold'
+                    }
+                }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '/get-show-products';
+                        }
+                    });
                 $('#frmCustomerForm')[0].reset();
                 }
             },

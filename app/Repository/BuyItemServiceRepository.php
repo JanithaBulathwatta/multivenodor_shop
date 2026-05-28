@@ -1,11 +1,13 @@
 <?php
 namespace App\Repository;
 
+use App\Mail\OrderSuccessMail;
 use App\Repository\Interfaces\BuyItemServiceInterface;
 use App\Sms\SmsSender;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class BuyItemServiceRepository implements BuyItemServiceInterface{
 
@@ -22,7 +24,7 @@ class BuyItemServiceRepository implements BuyItemServiceInterface{
 
         $cusResults = DB::table('customer_details')
                     ->select('cus_name','mobile','address')
-                    ->where('id',$userId)
+                    ->where('user_id',$userId)
                     ->where('record_status',1)
                     ->get();
 
@@ -85,6 +87,12 @@ class BuyItemServiceRepository implements BuyItemServiceInterface{
 
         // $message = "Dear ".$cusName." your order has been successfully placed.we will provide further informations";
         // SmsSender::sendSmsNotification($mobile,$message);
+
+        $orderData = DB::table('orders')->where('id', $orderId)->first();
+
+        $userEmail = Auth::user()->email;
+
+        Mail::to($userEmail)->send(new OrderSuccessMail($orderData));
 
         return[
             "status"=>200,

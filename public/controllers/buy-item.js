@@ -84,6 +84,7 @@ $(document).ready(function(){
             dataType: "json",
             success: function (response) {
                 if(response.status == 200){
+                    console.log('res',response)
                     Swal.fire({
                         title: '<strong>Order Placed!</strong>',
                         icon: 'success',
