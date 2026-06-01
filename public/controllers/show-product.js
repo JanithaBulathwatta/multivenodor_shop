@@ -52,7 +52,10 @@ $(document).ready(function(){
             data: data,
             dataType: "json",
             success: function (response) {
-
+                $('#product-list-container').html(response.html);
+            },
+            error:function(xhr){
+                console.log(xhr.responseText);
             }
         });
     });
