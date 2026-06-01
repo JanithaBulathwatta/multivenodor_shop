@@ -15,7 +15,7 @@ $(document).ready(function(){
         $('#modalProdDesc').text(desc);
         $('#modalProdImage').attr('src', img);
         $('#divModalProductView').modal('show');
-        
+
         sessionStorage.setItem('transferProductId', id);
 
     });
@@ -36,6 +36,25 @@ $(document).ready(function(){
 
     $('#btnToggleSearch').on('click', function() {
         $('#searchPanel').toggleClass('d-none');
+    });
+
+    $('#btnSearch').click(function(e){
+        e.preventDefault();
+        let serachKey = $('#txtSearch').val();
+
+        let data = {
+            "serachKey":serachKey
+        }
+
+        $.ajax({
+            type: "GET",
+            url: "/get-show-products",
+            data: data,
+            dataType: "json",
+            success: function (response) {
+
+            }
+        });
     });
 
 });

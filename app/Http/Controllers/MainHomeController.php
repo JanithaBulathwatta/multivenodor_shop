@@ -7,13 +7,24 @@ use Illuminate\Support\Facades\DB;
 
 class MainHomeController extends Controller
 {
-    public function loadShowProducts(){
+    public function loadShowProducts(Request $request){
+        $searchKey = $request->serachKey;
+
         $products = DB::table('products')
                     ->where('stock_quantity', '>', 0)
                     ->where('record_status',1)
                     ->orderBy('id','desc')
                     ->get();
                     
+        if($searchKey != ''){
+           $products = DB::table('products')
+                    ->where('stock_quantity', '>', 0)
+                    ->where('record_status',1)
+                    ->where('product_name','LIKE','%'.$searchKey.'%')
+                    ->orderBy('id','desc')
+                    ->get();
+        }
+
         return view('pages.show-product',compact('products'));
     }
 }
