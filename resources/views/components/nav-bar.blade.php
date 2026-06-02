@@ -61,7 +61,7 @@
                         aria-labelledby="userDropdown">
                         <li><a class="dropdown-item px-4 py-2 text-sm fw-medium" href="{{ route('customer.show') }}">My
                                 Profile</a></li>
-                        <li><a class="dropdown-item px-4 py-2 text-sm fw-medium" href="#">Orders</a></li>
+                        <li><a class="dropdown-item px-4 py-2 text-sm fw-medium" href="{{ route('order.show') }}">Orders</a></li>
                         <li>
                             @auth
                                 @if (auth()->user()->role === 'vendor')

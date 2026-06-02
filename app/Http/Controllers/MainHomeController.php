@@ -20,7 +20,6 @@ class MainHomeController extends Controller
 
     $products = $query->orderBy('id', 'desc')->get();
 
-    // 🌟 වැදගත්ම කොටස: AJAX රික්වෙස්ට් එකක් නම් බ්ලේඩ් Partial එක HTML විදිහට රෙන්ඩර් කරලා යවනවා
     if ($request->ajax()) {
         $html = view('partials.product-grid', compact('products'))->render();
         return response()->json(['html' => $html]);

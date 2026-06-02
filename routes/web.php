@@ -4,6 +4,7 @@ use App\Http\Controllers\AddCartController;
 use App\Http\Controllers\BuyItemController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MainHomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/get-load-buy-item',[BuyItemController::class,'loadBuyItem'])->name('buyItem.show');
     Route::get('/get-ordered-item-details',[BuyItemController::class,'getOrderItemDetails']);
     Route::post('/set-order-details',[BuyItemController::class, 'setOrderDetails']);
+
+    //orders
+    Route::get('/get-order',[OrderController::class, 'loadOrders'])->name('order.show');
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){

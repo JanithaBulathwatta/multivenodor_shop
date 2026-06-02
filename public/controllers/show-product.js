@@ -53,6 +53,7 @@ $(document).ready(function(){
             dataType: "json",
             success: function (response) {
                 $('#product-list-container').html(response.html);
+                $('#txtSearch').val('');
             },
             error:function(xhr){
                 console.log(xhr.responseText);
