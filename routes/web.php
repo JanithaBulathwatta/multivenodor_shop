@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
     //orders
     Route::get('/get-order',[OrderController::class, 'loadOrders'])->name('order.show');
+    Route::get('/get-order-details',[OrderController::class, 'getOrderDetails']);
 });
 
 Route::middleware(['auth','role:vendor'])->group(function(){
