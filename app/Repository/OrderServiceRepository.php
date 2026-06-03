@@ -25,7 +25,10 @@ class OrderServiceRepository implements OrderServiceInterface{
 
         $result = DB::select($sql);
 
-        dd($result);
+        return[
+            "status"=>200,
+            "result"=>$result
+        ];
     }
 
 }
