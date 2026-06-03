@@ -8,7 +8,9 @@ use App\Repository\CustomerServiceRepository;
 use App\Repository\Interfaces\AddToCartServiceInterface;
 use App\Repository\Interfaces\BuyItemServiceInterface;
 use App\Repository\Interfaces\CustomerServiceInterface;
+use App\Repository\Interfaces\OrderServiceInterface;
 use App\Repository\Interfaces\ProductServiceInterface;
+use App\Repository\OrderServiceRepository;
 use App\Repository\ProductServiceRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AddToCartServiceInterface::class,AddToCartServiceRepository::class);
         $this->app->bind(CustomerServiceInterface::class,CustomerServiceRepository::class);
         $this->app->bind(BuyItemServiceInterface::class,BuyItemServiceRepository::class);
+        $this->app->bind(OrderServiceInterface::class,OrderServiceRepository::class);
     }
 
     /**

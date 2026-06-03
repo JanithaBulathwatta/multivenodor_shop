@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -11,6 +12,7 @@ class OrderController extends Controller
     }
 
     public function getOrderDetails(Request $request){
-        
+        $response = OrderService::getOrderDetails($request);
+        return response()->json( $response);
     }
 }
