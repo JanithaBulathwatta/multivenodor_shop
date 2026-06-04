@@ -4,24 +4,21 @@ $(document).ready(function(){
     function getOrderDetails() {
     $.ajax({
         type: "GET",
-        url: "/get-order-details", // උඹේ Route URL එක
+        url: "/get-order-details",
         dataType: "json",
         success: function (response) {
             if (response.status == 200) {
 
                 let orders = response.result;
-                let htmlContent = ''; // HTML ටික එකතු කරලා තියාගන්න හිස් variable එකක්
+                let htmlContent = '';
 
-                // 1. ඕඩර්ස් මුකුත්ම නැත්නම් පණිවිඩයක් පෙන්වනවා
                 if(orders.length === 0) {
                     $('#orders-list-container').html('<div class="text-center py-5 text-muted">No orders found!</div>');
                     return;
                 }
 
-                // 2. Orders ලිස්ට් එක ලූප් එකක් ඇතුළේ කරකවනවා
                 orders.forEach(function(order) {
 
-                    // Order Status එක අනුව Badge එකේ කලර් එක තීරණය කිරීම
                     let statusStyle = '';
                     let status = order.order_status.toLowerCase();
                     if(status === 'pending') { statusStyle = 'background-color: #fef3c7; color: #d97706;'; }
@@ -29,12 +26,10 @@ $(document).ready(function(){
                     else if(status === 'delivered') { statusStyle = 'background-color: #dcfce7; color: #15803d;'; }
                     else { statusStyle = 'background-color: #fee2e2; color: #b91c1c;'; }
 
-                    // මුදල් ගණන් වලට දශම තිත දාගන්න ලේසිම ක්‍රමය (JS NumberFormat)
                     let formattedPrice = parseFloat(order.price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                     let formattedShipping = parseFloat(order.shipping_fee).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                     let formattedTotal = (parseFloat(order.price) + parseFloat(order.shipping_fee)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-                    // HTML කාඩ් එක ස්ට්‍රින්ග් එකක් විදිහට එකතු කරගන්නවා
                     htmlContent += `
                     <div class="order-card p-3 p-md-4 rounded-4 shadow-sm mb-3" style="border: 1px solid #f1f5f9; background: #ffffff; transition: all 0.25s ease;">
                         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
@@ -93,7 +88,6 @@ $(document).ready(function(){
                     `;
                 });
 
-                // 3. අන්තිමට ලූප් එකෙන් හැදුනු සම්පූර්ණ HTML එක එක පාරින්ම div එකට ඔබනවා
                 $('#orders-list-container').html(htmlContent);
 
             } else {
