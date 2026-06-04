@@ -24,12 +24,12 @@
                 <li class="nav-item">
                     <a class="nav-link fw-semibold text-dark" href="{{ route('home.show') }}">Home</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link fw-semibold text-muted hover:text-dark" href="#">Shop</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-semibold text-muted hover:text-dark" href="#">Categories</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link fw-semibold text-muted hover:text-dark" href="#">About</a>
                 </li>
