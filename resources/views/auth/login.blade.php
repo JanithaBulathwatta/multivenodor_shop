@@ -62,7 +62,7 @@
                                    required
                                    autofocus
                                    autocomplete="username"
-                                   placeholder="janitha" />
+                                   placeholder="jhone456@gmail.com" />
                         </div>
                         <x-input-error :messages="$errors->get('email')" class="mt-2 text-xs font-semibold text-red-500" />
                     </div>
